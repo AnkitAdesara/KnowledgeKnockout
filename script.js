@@ -13,6 +13,7 @@ let currentQuestionIndex = 0;
 let a;
 let limit;
 let res;
+// let correction;
 function sub() {
     container.style.display = "none";
     let t = document.getElementById("category").value;
@@ -69,9 +70,11 @@ function displayQuestion(i) {
     }
 }
 function answer(clickedAnswer, item) {
-    clickedAnswer.style.color = "#FFE77AFF"
+    const correctAnswerBtn = document.querySelector(`#onces button:nth-of-type(${answer1[item].indexOf(correction[item]) + 1})`);
+    clickedAnswer.style.color = "#FFE77AFF";
+    correctAnswerBtn.style.backgroundColor = "rgb(69, 203, 69)";
     if (clickedAnswer.innerText == correction[item]) {
-        document.getElementById("z").innerHTML = "Correcrt Answer";
+        document.getElementById("z").innerHTML = "Correct Answer";
         score += 10;
         document.getElementById("yz").innerHTML = "Your Score is : " + score + " points";
     } else {
@@ -82,6 +85,7 @@ function answer(clickedAnswer, item) {
     const nextBtn = document.getElementById("next-btn");
     nextBtn.removeAttribute("disabled");
 }
+
 function odacv() {
     subBtn = document.getElementById("chk")
     subBtn.setAttribute("disabled", "true");
